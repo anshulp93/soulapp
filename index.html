@@ -1,0 +1,1443 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html;charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>
+        </title>
+        <!-- <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/jquery.mobile/1.1.1/jquery.mobile-1.1.1.min.css" /> -->
+		<link rel="stylesheet" href="jquery.mobile-1.1.1.min.css" />
+        <link rel="stylesheet" href="my.css" />
+        <style>
+            /* App custom styles */
+        </style>
+		<script type="text/javascript">
+  
+				  var inps=document.getElementsByTagName('input');
+				  var a_count=0;
+				  var b_count=0;
+				  var c_count=0;
+				  var d_count=0;
+				  var answer=0;
+				  var a=0;
+				  var b=0;
+				  var cc=0;
+				  var d=0;
+				  var tracker=0;
+				  var skintype="";
+				  //var features_y='width=300,height=300,left=520,top=300,scrollbars=1';
+				  //var features_n='width=300,height=300,left=200,top=300,scrollbars=1';
+				  
+				  function displayPopUp() {
+				  
+						  for(c=0;c<inps.length;c++) {
+							  if((inps[c].type=='radio')&&(inps[c].checked==true)&&(inps[c].value=='a')) {
+							  a_count++;
+							  }
+							  if((inps[c].type=='radio')&&(inps[c].checked==true)&&(inps[c].value=='b')) {
+							  b_count++;
+							  }
+							  if((inps[c].type=='radio')&&(inps[c].checked==true)&&(inps[c].value=='c')) {
+							  c_count++;
+							  }
+							  if((inps[c].type=='radio')&&(inps[c].checked==true)&&(inps[c].value=='d')) {
+							  d_count++;
+							  }
+						  }
+						  
+						  for(c=0;c<inps.length;c++) {
+							  if((inps[c].type=='radio')&&(inps[c].checked==true)&&(inps[c].value=='a') &&(inps[c].name=='q1')) {
+							  tracker=1;
+							  }
+							  if((inps[c].type=='radio')&&(inps[c].checked==true)&&(inps[c].value=='b')&&(inps[c].name=='q1')) {
+							  tracker=2;
+							  }
+							  if((inps[c].type=='radio')&&(inps[c].checked==true)&&(inps[c].value=='c')&&(inps[c].name=='q1')) {
+							  tracker=3;
+							  }
+							  if((inps[c].type=='radio')&&(inps[c].checked==true)&&(inps[c].value=='d')&&(inps[c].name=='q1')) {
+							  tracker=4;
+							  }
+						  }
+						  
+						  answer=a_count;
+						  
+						  for(c=0;c<inps.length;c++) {
+						  
+							  if(b_count>answer) answer=b_count;
+							  if(c_count>answer) answer=c_count;
+							  if(d_count>answer) answer=d_count;
+							  
+							  if(answer==a_count && a_count!=b_count && a_count!=c_count && a_count!=d_count) {
+								  skintype="Normal";}
+							  else if(answer==b_count && b_count!=a_count && b_count!=c_count && b_count!=d_count) {      skintype="Dry";}
+							  else if(answer==c_count && c_count!=a_count && c_count!=b_count && c_count!=d_count) {		      skintype="Combination";}
+							  else if(answer==d_count && d_count!=a_count && d_count!=b_count && d_count!=c_count) {      skintype="Oily";}
+							  
+							  else if(answer==a_count && tracker==1) {skintype="Normal";}
+							  else if(answer==b_count && tracker==2) {skintype="Dry";}
+							  else if(answer==c_count && tracker==3) {skintype="Combination";}
+							  else if(answer==d_count && tracker==4) {skintype="Oily";}
+							  
+							  //document.write(skintype);
+							  document.getElementById('userInput').innerHTML = skintype;
+
+							  /*alert('a_ccount='+a_count+' b_ccount='+b_count+' c_ccount='+c_count+' d_ccount='+d_count+'answer='+answer);*/
+						  }
+				  
+				  }
+		</script>
+        <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"> -->
+		<script src="jquery.min.js">
+        </script>
+        <!-- <script src="https://ajax.aspnetcdn.com/ajax/jquery.mobile/1.1.1/jquery.mobile-1.1.1.min.js"> -->
+		<script src="jquery.mobile-1.1.1.min.js">
+        </script>
+        <script src="my.js">
+        </script>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+        <meta name="description" content="Slicebox - 3D Image Slider with Fallback" />
+        <meta name="keywords" content="jquery, css3, 3d, webkit, fallback, slider, css3, 3d transforms, slices, rotate, box, automatic" />
+		<meta name="author" content="Pedro Botelho for Codrops" />
+		<link rel="shortcut icon" href="../favicon.ico"> 
+        <link rel="stylesheet" type="text/css" href="css/demo.css" />
+		<link rel="stylesheet" type="text/css" href="css/slicebox.css" />
+		<link rel="stylesheet" type="text/css" href="css/custom.css" />
+		<script type="text/javascript" src="js/modernizr.custom.46884.js"></script>
+  <!--[if lt IE 7]>
+  	<link rel="stylesheet" href="css/ie/ie6.css" type="text/css" media="all">
+  <![endif]-->
+  <!--[if lt IE 9]>
+  	<script type="text/javascript" src="js/html5.js"></script>
+    <script type="text/javascript" src="js/IE9.js"></script>
+  <![endif]-->
+    </head>
+    <body>
+        <!-- Home -->
+        <div data-role="page" id="page1">
+            <div data-theme="a" data-role="header">
+                <h3>
+                    Soulflower
+                </h3>
+            </div>
+			
+            <div data-role="content">
+				<div class="container">
+				</br>
+					<div class="wrapper">
+
+						<ul id="sb-slider" class="sb-slider">
+							<li>
+								<img src="img/slide1.jpg" alt="image1"/></a>
+								<div class="sb-description">
+								</div>
+							</li>
+							<li>
+								<img src="img/slide2.jpg" alt="image2"/></a>
+								<div class="sb-description">
+								</div>
+							</li>
+							<li>
+								<img src="img/slide3.jpg" alt="image1"/></a>
+								<div class="sb-description">
+								</div>
+							</li>
+							<li>
+								<img src="img/slide4.jpg" alt="image1"/></a>
+								<div class="sb-description">
+								</div>
+							</li>
+							<li>
+								<img src="img/slide5.jpg" alt="image1"/></a>
+								<div class="sb-description">
+								</div>
+							</li>
+							<li>
+								<img src="img/bg3.jpg" alt="image1"/></a>
+								<div class="sb-description">
+								</div>
+							</li>
+							<li>
+								<img src="img/bg5.jpg" alt="image1"/></a>
+								<div class="sb-description">
+								</div>
+							</li>
+						</ul>
+
+						<div id="shadow" class="shadow"></div>
+
+						<div id="nav-arrows" class="nav-arrows">
+							<a href="#">Next</a>
+							<a href="#">Previous</a>
+						</div><div id="nav-options" class="nav-options">
+							<span id="navPlay">Play</span>
+							<span id="navPause">Pause</span>
+						</div>
+
+					</div><!-- /wrapper -->
+
+				</div>
+                        
+			<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+		<script type="text/javascript" src="js/jquery.slicebox.js"></script>
+		<script type="text/javascript">
+			$(function() {
+				
+				var Page = (function() {
+
+					var $navArrows = $( '#nav-arrows' ).hide(),
+						$navOptions = $( '#nav-options' ).hide(),
+						$shadow = $( '#shadow' ).hide(),
+						slicebox = $( '#sb-slider' ).slicebox( {
+							onReady : function() {
+
+								$navArrows.show();
+								$navOptions.show();
+								$shadow.show();
+
+							},
+							orientation : 'h',
+							cuboidsCount : 3
+						} ),
+						
+						init = function() {
+
+							initEvents();
+							
+						},
+						initEvents = function() {
+
+							// add navigation events
+							$navArrows.children( ':first' ).on( 'click', function() {
+
+								slicebox.next();
+								return false;
+
+							} );
+
+							$navArrows.children( ':last' ).on( 'click', function() {
+								
+								slicebox.previous();
+								return false;
+
+							} );
+
+							$( '#navPlay' ).on( 'click', function() {
+								
+								slicebox.play();
+								return false;
+
+							} );
+
+							$( '#navPause' ).on( 'click', function() {
+								
+								slicebox.pause();
+								return false;
+
+							} );
+
+						};
+
+						return { init : init };
+
+				})();
+
+				Page.init();
+
+			});
+		</script>
+			</div>
+            <div data-role="tabbar" data-iconpos="top" data-theme="a">
+                <ul>
+                    <li>
+                        <a href="#page1" data-theme="" data-icon="home">
+                            Home
+                        </a>
+                    </li>
+					<li>
+                        <a href="#page1" data-theme="" data-icon="home">
+                            Products
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#page2" data-theme="" data-icon="star">
+                            Moods
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#page3" data-theme="" data-icon="grid">
+                            Skin
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#page4" data-theme="" data-icon="plus">
+                            More
+                        </a>
+                    </li>
+                </ul>
+            </div>
+			</div>
+        </div>
+        <!-- Moods -->
+        <div data-role="page" id="page2">
+            <div data-theme="a" data-role="header">
+                <h3>
+                    Soulflower
+                </h3>
+            </div>
+            <div data-role="content" style="height:42.3em">
+               
+				<img src="img/mood.jpg" alt="moods" style=" height:100%;width:100%" ismap="ismap" usemap="#moodsmap">
+				
+				<map name="moodsmap">
+					<area shape="rect" coords="50,30,610,240" alt="Relax" href="#page5" data-transition="pop">
+					<area shape="rect" coords="640,30,1200,240" alt="Refresh" href="#page18" data-transition="pop">
+					<area shape="rect" coords="50,280,600,490" alt="Sleep" href="#page19" data-transition="pop">
+					<area shape="rect" coords="640,280,1200,490" alt="Romance" href="#page22" data-transition="pop">
+				</map>
+				
+            </div>
+            <div data-role="tabbar" data-iconpos="top" data-theme="a">
+                <ul>
+                    <li>
+                        <a href="#page1" data-theme="" data-icon="home">
+                            Home
+                        </a>
+                    </li>
+					<li>
+                        <a href="#page1" data-theme="" data-icon="home">
+                            Products
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#page2" data-theme="" data-icon="star">
+                            Moods
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#page3" data-theme="" data-icon="grid">
+                            Skin
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#page4" data-theme="" data-icon="plus">
+                            More
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- Skin -->
+        <div data-role="page" id="page3">
+            <div data-theme="a" data-role="header">
+                <h3>
+                    Soulflower
+                </h3>
+            </div>
+            <div data-role="content" style="height:42.3em">
+                <img src="img/skin.jpg" alt="moods" style=" height:100%;width:100%" ismap="ismap" usemap="#skinmap">
+				
+				<map name="skinmap">
+					<area shape="rect" coords="50,30,600,240" alt="Dry" href="#page25" data-transition="pop">
+					<area shape="rect" coords="640,30,1100,240" alt="Normal" href="#page23" data-transition="pop">
+					<area shape="rect" coords="50,280,600,490" alt="Oily" href="#page24" data-transition="pop">
+					<area shape="rect" coords="640,280,1200,490" alt="Combination" href="#page26" data-transition="pop">
+				</map>
+            </div>
+				
+            <div data-role="tabbar" data-iconpos="top" data-theme="a">
+                <ul>
+                    <li>
+                        <a href="#page1" data-theme="" data-icon="home">
+                            Home
+                        </a>
+                    </li>
+					<li>
+                        <a href="#page1" data-theme="" data-icon="home">
+                            Products
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#page2" data-theme="" data-icon="star">
+                            Moods
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#page3" data-theme="" data-icon="grid">
+                            Skin
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#page4" data-theme="" data-icon="plus">
+                            More
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- More -->
+        <div data-role="page" id="page4">
+            <div data-theme="a" data-role="header">
+                <h3>
+                    Soulflower
+                </h3>
+            </div>
+            <div data-role="content">
+                <ul data-role="listview" data-divider-theme="b" data-inset="true">
+                    <li data-role="list-divider" role="heading">
+                        Menu
+                    </li>
+                    <li data-theme="c">
+                        <a href="#page13" data-transition="slide">
+                            About Us
+                        </a>
+                    </li>
+                    <li data-theme="c">
+                        <a href="#page15" data-transition="slide">
+                            Gift Recommendations
+                        </a>
+                    </li>
+                    <li data-theme="c">
+                        <a href="#page16" data-transition="slide">
+                            Home Decor
+                        </a>
+                    </li>
+                    <li data-theme="c">
+                        <a href="#page17" data-transition="slide">
+                            Know Your Skin Type
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div data-role="tabbar" data-iconpos="top" data-theme="a">
+                <ul>
+                    <li>
+                        <a href="#page1" data-theme="" data-icon="home">
+                            Home
+                        </a>
+                    </li>
+					<li>
+                        <a href="#page1" data-theme="" data-icon="home">
+                            Products
+                        </a>
+                    </li>
+					<li>
+                        <a href="#page2" data-theme="" data-icon="star">
+                            Moods
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#page3" data-theme="" data-icon="grid">
+                            Skin
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#page4" data-theme="" data-icon="plus">
+                            More
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- Refresh -->
+        <div data-role="page" id="page5">
+            <div data-theme="a" data-role="header">
+                <h3>
+                    Soulflower
+                </h3>
+            </div>
+            <div data-role="content">
+                <img src="img/romance.jpg" alt="moods" style=" height:100%;width:100%" ismap="ismap" usemap="#romancemap">
+				
+					<map name="romancemap">
+						<area shape="rect" coords="80,70,300,500" alt="Essential oil" href="#page1" data-transition="pop">
+						<area shape="rect" coords="340,70,560,500" alt="Bath salt" href="#page3" data-transition="pop">
+						<area shape="rect" coords="620,70,900,500" alt="Carrier oil" href="#page4" data-transition="pop">
+						<area shape="rect" coords="1000,70,1240,500" alt="Soap" href="#page22" data-transition="pop">
+					</map>
+            </div>
+            <div data-role="tabbar" data-iconpos="top" data-theme="a">
+                <ul>
+                    <li>
+                        <a href="#page1" data-theme="" data-icon="home">
+                            Home
+                        </a>
+                    </li>
+					<li>
+                        <a href="#page1" data-theme="" data-icon="home">
+                            Products
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#page2" data-theme="" data-icon="star">
+                            Moods
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#page3" data-theme="" data-icon="grid">
+                            Skin
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#page4" data-theme="" data-icon="plus">
+                            More
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- Relax -->
+        <div data-role="page" id="page18">
+            <div data-theme="a" data-role="header">
+                <h3>
+                    Soulflower
+                </h3>
+            </div>
+            <div data-role="content">
+                <img src="img/romance.jpg" alt="moods" style=" height:100%;width:100%" ismap="ismap" usemap="#romancemap">
+				
+					<map name="romancemap">
+						<area shape="rect" coords="80,70,300,500" alt="Essential oil" href="#page1" data-transition="pop">
+						<area shape="rect" coords="340,70,560,500" alt="Bath salt" href="#page3" data-transition="pop">
+						<area shape="rect" coords="620,70,900,500" alt="Carrier oil" href="#page4" data-transition="pop">
+						<area shape="rect" coords="1000,70,1240,500" alt="Soap" href="#page22" data-transition="pop">
+					</map>
+            </div>
+            <div data-role="tabbar" data-iconpos="top" data-theme="a">
+                <ul>
+                    <li>
+                        <a href="#page1" data-theme="" data-icon="home">
+                            Home
+                        </a>
+                    </li>
+					<li>
+                        <a href="#page1" data-theme="" data-icon="home">
+                            Products
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#page2" data-theme="" data-icon="star">
+                            Moods
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#page3" data-theme="" data-icon="grid">
+                            Skin
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#page4" data-theme="" data-icon="plus">
+                            More
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- Sleep -->
+        <div data-role="page" id="page19">
+            <div data-theme="a" data-role="header">
+                <h3>
+                    Soulflower
+                </h3>
+            </div>
+            <div data-role="content">
+                <img src="img/romance.jpg" alt="moods" style=" height:100%;width:100%" ismap="ismap" usemap="#romancemap">
+				
+					<map name="romancemap">
+						<area shape="rect" coords="80,70,300,500" alt="Essential oil" href="#page1" data-transition="pop">
+						<area shape="rect" coords="340,70,560,500" alt="Bath salt" href="#page3" data-transition="pop">
+						<area shape="rect" coords="620,70,900,500" alt="Carrier oil" href="#page4" data-transition="pop">
+						<area shape="rect" coords="1000,70,1240,500" alt="Soap" href="#page22" data-transition="pop">
+					</map>
+            </div>
+            <div data-role="tabbar" data-iconpos="top" data-theme="a">
+                <ul>
+                    <li>
+                        <a href="#page1" data-theme="" data-icon="home">
+                            Home
+                        </a>
+                    </li>
+					<li>
+                        <a href="#page1" data-theme="" data-icon="home">
+                            Products
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#page2" data-theme="" data-icon="star">
+                            Moods
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#page3" data-theme="" data-icon="grid">
+                            Skin
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#page4" data-theme="" data-icon="plus">
+                            More
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- Romance -->
+        <div data-role="page" id="page22">
+            <div data-theme="a" data-role="header">
+                <h3>
+                    Soulflower
+                </h3>
+            </div>
+            <div data-role="content">
+				<img src="img/romance.jpg" alt="moods" style=" height:100%;width:100%" ismap="ismap" usemap="#romancemap">
+				
+				<map name="romancemap">
+					<area shape="rect" coords="80,70,300,500" alt="Essential oil" href="#page1" data-transition="pop">
+					<area shape="rect" coords="340,70,560,500" alt="Bath salt" href="#page3" data-transition="pop">
+					<area shape="rect" coords="620,70,900,500" alt="Carrier oil" href="#page4" data-transition="pop">
+					<area shape="rect" coords="1000,70,1240,500" alt="Soap" href="#page22" data-transition="pop">
+				</map>
+            </div>
+			
+            <div data-role="tabbar" data-iconpos="top" data-theme="a">
+                <ul>
+                    <li>
+                        <a href="#page1" data-theme="" data-icon="home">
+                            Home
+                        </a>
+                    </li>
+					<li>
+                        <a href="#page1" data-theme="" data-icon="home">
+                            Products
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#page2" data-theme="" data-icon="star">
+                            Moods
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#page3" data-theme="" data-icon="grid">
+                            Skin
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#page4" data-theme="" data-icon="plus">
+                            More
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- Normal -->
+        <div data-role="page" id="page23">
+            <div data-theme="a" data-role="header">
+                <h3>
+                    Soulflower
+                </h3>
+            </div>
+            <div data-role="content">
+					<img src="img/romance.jpg" alt="moods" style=" height:100%;width:100%" ismap="ismap" usemap="#romap">
+				
+					<map name="romap">
+						<area shape="rect" coords="80,70,300,500" alt="Essential oil" href="#noress" data-transition="pop">
+						<area shape="rect" coords="340,70,560,500" alt="Bath salt" href="#norbath" data-transition="pop">
+						<area shape="rect" coords="620,70,900,500" alt="Carrier oil" href="#normsc" data-transition="pop">
+						<area shape="rect" coords="1000,70,1240,500" alt="Soap" href="#norsoap" data-transition="pop">
+					</map>
+            </div>
+            <div data-role="tabbar" data-iconpos="top" data-theme="a">
+                <ul>
+                    <li>
+                        <a href="#page1" data-theme="" data-icon="home">
+                            Home
+                        </a>
+                    </li>
+					<li>
+                        <a href="#page1" data-theme="" data-icon="home">
+                            Products
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#page2" data-theme="" data-icon="star">
+                            Moods
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#page3" data-theme="" data-icon="grid">
+                            Skin
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#page4" data-theme="" data-icon="plus">
+                            More
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- Oily -->
+        <div data-role="page" id="page24">
+            <div data-theme="a" data-role="header">
+                <h3>
+                    Soulflower
+                </h3>
+            </div>
+            <div data-role="content">
+					<img src="img/romance.jpg" alt="moods" style=" height:100%;width:100%" ismap="ismap" usemap="#oilmap">
+				
+					<map name="oilmap">
+						<area shape="rect" coords="80,70,300,500" alt="Essential oil" href="#oiless" data-transition="pop">
+						<area shape="rect" coords="340,70,560,500" alt="Bath salt" href="#oilbath" data-transition="pop">
+						<area shape="rect" coords="620,70,900,500" alt="Carrier oil" href="#oilmsc" data-transition="pop">
+						<area shape="rect" coords="1000,70,1240,500" alt="Soap" href="#oilsoap" data-transition="pop">
+					</map>
+            </div>
+            <div data-role="tabbar" data-iconpos="top" data-theme="a">
+                <ul>
+                    <li>
+                        <a href="#page1" data-theme="" data-icon="home">
+                            Home
+                        </a>
+                    </li>
+					<li>
+                        <a href="#page1" data-theme="" data-icon="home">
+                            Products
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#page2" data-theme="" data-icon="star">
+                            Moods
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#page3" data-theme="" data-icon="grid">
+                            Skin
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#page4" data-theme="" data-icon="plus">
+                            More
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- Dry -->
+        <div data-role="page" id="page25">
+            <div data-theme="a" data-role="header">
+                <h3>
+                    Soulflower
+                </h3>
+            </div>
+            <div data-role="content">
+                <img src="img/romance.jpg" alt="moods" style=" height:100%;width:100%" ismap="ismap" usemap="#romancemap">
+				
+					<map name="romancemap">
+						<area shape="rect" coords="80,70,300,500" alt="Essential oil" href="#page1" data-transition="pop">
+						<area shape="rect" coords="340,70,560,500" alt="Bath salt" href="#page3" data-transition="pop">
+						<area shape="rect" coords="620,70,900,500" alt="Carrier oil" href="#page4" data-transition="pop">
+						<area shape="rect" coords="1000,70,1240,500" alt="Soap" href="#page22" data-transition="pop">
+					</map>
+            </div>
+            <div data-role="tabbar" data-iconpos="top" data-theme="a">
+                <ul>
+                    <li>
+                        <a href="#page1" data-theme="" data-icon="home">
+                            Home
+                        </a>
+                    </li>
+					<li>
+                        <a href="#page1" data-theme="" data-icon="home">
+                            Products
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#page2" data-theme="" data-icon="star">
+                            Moods
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#page3" data-theme="" data-icon="grid">
+                            Skin
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#page4" data-theme="" data-icon="plus">
+                            More
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- Combination -->
+        <div data-role="page" id="page26">
+            <div data-theme="a" data-role="header">
+                <h3>
+                    Soulflower
+                </h3>
+            </div>
+            <div data-role="content">
+                <img src="img/romance.jpg" alt="moods" style=" height:100%;width:100%" ismap="ismap" usemap="#romancemap">
+				
+					<map name="romancemap">
+						<area shape="rect" coords="80,70,300,500" alt="Essential oil" href="#page1" data-transition="pop">
+						<area shape="rect" coords="340,70,560,500" alt="Bath salt" href="#page3" data-transition="pop">
+						<area shape="rect" coords="620,70,900,500" alt="Carrier oil" href="#page4" data-transition="pop">
+						<area shape="rect" coords="1000,70,1240,500" alt="Soap" href="#page22" data-transition="pop">
+					</map>
+            </div>
+            <div data-role="tabbar" data-iconpos="top" data-theme="a">
+                <ul>
+                    <li>
+                        <a href="#page1" data-theme="" data-icon="home">
+                            Home
+                        </a>
+                    </li>
+					<li>
+                        <a href="#page1" data-theme="" data-icon="home">
+                            Products
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#page2" data-theme="" data-icon="star">
+                            Moods
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#page3" data-theme="" data-icon="grid">
+                            Skin
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#page4" data-theme="" data-icon="plus">
+                            More
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- AboutUs -->
+        <div data-role="page" id="page13">
+            <div data-theme="a" data-role="header">
+                <h3>
+                    Soulflower
+                </h3>
+            </div>
+            <div data-role="content">
+            </div>
+            <div data-role="tabbar" data-iconpos="top" data-theme="a">
+                <ul>
+                    <li>
+                        <a href="#page1" data-theme="" data-icon="home">
+                            Home
+                        </a>
+                    </li>
+					<li>
+                        <a href="#page1" data-theme="" data-icon="home">
+                            Products
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#page2" data-theme="" data-icon="star">
+                            Moods
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#page3" data-theme="" data-icon="grid">
+                            Skin
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#page4" data-theme="" data-icon="plus">
+                            More
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- Products -->
+        <div data-role="page" id="page14">
+            <div data-theme="a" data-role="header">
+                <h3>
+                    Soulflower
+                </h3>
+            </div>
+            <div data-role="content">
+                <ul data-role="listview" data-divider-theme="b" data-inset="true">
+                    <li data-role="list-divider" role="heading">
+                        Categories
+                    </li>
+                    <li data-theme="c">
+                        <a href="#page1" data-transition="slide">
+                            Soaps
+                        </a>
+                    </li>
+                    <li data-theme="c">
+                        <a href="#page1" data-transition="slide">
+                            Essential Oil
+                        </a>
+                    </li>
+                    <li data-theme="c">
+                        <a href="#page1" data-transition="slide">
+                            Massage Oil
+                        </a>
+                    </li>
+                    <li data-theme="c">
+                        <a href="#page1" data-transition="slide">
+                            Potpourri
+                        </a>
+                    </li>
+                    <li data-theme="c">
+                        <a href="#page1" data-transition="slide">
+                            Bath Salt
+                        </a>
+                    </li>
+                    <li data-theme="c">
+                        <a href="#page1" data-transition="slide">
+                            Carrier Oil
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div data-role="tabbar" data-iconpos="top" data-theme="a">
+                <ul>
+                    <li>
+                        <a href="#page1" data-theme="" data-icon="home">
+                            Home
+                        </a>
+                    </li>
+					<li>
+                        <a href="#page1" data-theme="" data-icon="home">
+                            Products
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#page2" data-theme="" data-icon="star">
+                            Moods
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#page3" data-theme="" data-icon="grid">
+                            Skin
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#page4" data-theme="" data-icon="plus">
+                            More
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- GiftRecommendations -->
+        <div data-role="page" id="page15">
+            <div data-theme="a" data-role="header">
+                <h3>
+                    Soulflower
+                </h3>
+            </div>
+            <div data-role="content">
+            </div>
+            <div data-role="tabbar" data-iconpos="top" data-theme="a">
+                <ul>
+                    <li>
+                        <a href="#page1" data-theme="" data-icon="home">
+                            Home
+                        </a>
+                    </li>
+					<li>
+                        <a href="#page1" data-theme="" data-icon="home">
+                            Products
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#page2" data-theme="" data-icon="star">
+                            Moods
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#page3" data-theme="" data-icon="grid">
+                            Skin
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#page4" data-theme="" data-icon="plus">
+                            More
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- Home Decor -->
+        <div data-role="page" id="page16">
+            <div data-theme="a" data-role="header">
+                <h3>
+                    Soulflower
+                </h3>
+            </div>
+            <div data-role="content">
+				 <iframe src="home.html" width="100%" display="block" position="relative" style="height:40em" 
+					frameborder="0"  name="myInlineFrame"></iframe>
+            </div>
+            <div data-role="tabbar" data-iconpos="top" data-theme="a">
+                <ul>
+                    <li>
+                        <a href="#page1" data-theme="" data-icon="home">
+                            Home
+                        </a>
+                    </li>
+					<li>
+                        <a href="#page1" data-theme="" data-icon="home">
+                            Products
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#page2" data-theme="" data-icon="star">
+                            Moods
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#page3" data-theme="" data-icon="grid">
+                            Skin
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#page4" data-theme="" data-icon="plus">
+                            More
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+		
+		<!-- normal skin soaps -->
+        <div data-role="page" id="norsoap">
+            <div data-theme="a" data-role="header">
+                <h3>
+                    Soulflower
+                </h3>
+            </div>
+            <div data-role="content">
+				 <iframe src="norsoap.html" width="100%" display="block" position="relative" style="height:40em" 
+					frameborder="0"  name="myInlineFrame"></iframe>
+            </div>
+            <div data-role="tabbar" data-iconpos="top" data-theme="a">
+                <ul>
+                    <li>
+                        <a href="#page1" data-theme="" data-icon="home">
+                            Home
+                        </a>
+                    </li>
+					<li>
+                        <a href="#page1" data-theme="" data-icon="home">
+                            Products
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#page2" data-theme="" data-icon="star">
+                            Moods
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#page3" data-theme="" data-icon="grid">
+                            Skin
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#page4" data-theme="" data-icon="plus">
+                            More
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+		
+		<!-- normal skin bath salts -->
+        <div data-role="page" id="norbath">
+            <div data-theme="a" data-role="header">
+                <h3>
+                    Soulflower
+                </h3>
+            </div>
+            <div data-role="content">
+				 <iframe src="norbath.html" width="100%" display="block" position="relative" style="height:40em" 
+					frameborder="0"  name="myInlineFrame"></iframe>
+            </div>
+            <div data-role="tabbar" data-iconpos="top" data-theme="a">
+                <ul>
+                    <li>
+                        <a href="#page1" data-theme="" data-icon="home">
+                            Home
+                        </a>
+                    </li>
+					<li>
+                        <a href="#page1" data-theme="" data-icon="home">
+                            Products
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#page2" data-theme="" data-icon="star">
+                            Moods
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#page3" data-theme="" data-icon="grid">
+                            Skin
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#page4" data-theme="" data-icon="plus">
+                            More
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+		
+		<!-- normal skin essential oils -->
+        <div data-role="page" id="noress">
+            <div data-theme="a" data-role="header">
+                <h3>
+                    Soulflower
+                </h3>
+            </div>
+            <div data-role="content">
+				 <iframe src="noress.html" width="100%" display="block" position="relative" style="height:40em" 
+					frameborder="0"  name="myInlineFrame"></iframe>
+            </div>
+            <div data-role="tabbar" data-iconpos="top" data-theme="a">
+                <ul>
+                    <li>
+                        <a href="#page1" data-theme="" data-icon="home">
+                            Home
+                        </a>
+                    </li>
+					<li>
+                        <a href="#page1" data-theme="" data-icon="home">
+                            Products
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#page2" data-theme="" data-icon="star">
+                            Moods
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#page3" data-theme="" data-icon="grid">
+                            Skin
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#page4" data-theme="" data-icon="plus">
+                            More
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+		
+		<!-- normal skin massage carrier oils -->
+        <div data-role="page" id="normsc">
+            <div data-theme="a" data-role="header">
+                <h3>
+                    Soulflower
+                </h3>
+            </div>
+            <div data-role="content">
+				 <iframe src="normsc.html" width="100%" display="block" position="relative" style="height:40em" 
+					frameborder="0"  name="myInlineFrame"></iframe>
+            </div>
+            <div data-role="tabbar" data-iconpos="top" data-theme="a">
+                <ul>
+                    <li>
+                        <a href="#page1" data-theme="" data-icon="home">
+                            Home
+                        </a>
+                    </li>
+					<li>
+                        <a href="#page1" data-theme="" data-icon="home">
+                            Products
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#page2" data-theme="" data-icon="star">
+                            Moods
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#page3" data-theme="" data-icon="grid">
+                            Skin
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#page4" data-theme="" data-icon="plus">
+                            More
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+		
+		<!-- oily skin soaps -->
+        <div data-role="page" id="oilsoap">
+            <div data-theme="a" data-role="header">
+                <h3>
+                    Soulflower
+                </h3>
+            </div>
+            <div data-role="content">
+				 <iframe src="oilsoap.html" width="100%" display="block" position="relative" style="height:40em" 
+					frameborder="0"  name="myInlineFrame"></iframe>
+            </div>
+            <div data-role="tabbar" data-iconpos="top" data-theme="a">
+                <ul>
+                    <li>
+                        <a href="#page1" data-theme="" data-icon="home">
+                            Home
+                        </a>
+                    </li>
+					<li>
+                        <a href="#page1" data-theme="" data-icon="home">
+                            Products
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#page2" data-theme="" data-icon="star">
+                            Moods
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#page3" data-theme="" data-icon="grid">
+                            Skin
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#page4" data-theme="" data-icon="plus">
+                            More
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+		
+		<!-- oily skin bath salts -->
+        <div data-role="page" id="oilbath">
+            <div data-theme="a" data-role="header">
+                <h3>
+                    Soulflower
+                </h3>
+            </div>
+            <div data-role="content">
+				 <iframe src="oilbath.html" width="100%" display="block" position="relative" style="height:40em" 
+					frameborder="0"  name="myInlineFrame"></iframe>
+            </div>
+            <div data-role="tabbar" data-iconpos="top" data-theme="a">
+                <ul>
+                    <li>
+                        <a href="#page1" data-theme="" data-icon="home">
+                            Home
+                        </a>
+                    </li>
+					<li>
+                        <a href="#page1" data-theme="" data-icon="home">
+                            Products
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#page2" data-theme="" data-icon="star">
+                            Moods
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#page3" data-theme="" data-icon="grid">
+                            Skin
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#page4" data-theme="" data-icon="plus">
+                            More
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+		
+		<!-- oily skin essential oils -->
+        <div data-role="page" id="oiless">
+            <div data-theme="a" data-role="header">
+                <h3>
+                    Soulflower
+                </h3>
+            </div>
+            <div data-role="content">
+				 <iframe src="oiless.html" width="100%" display="block" position="relative" style="height:40em" 
+					frameborder="0"  name="myInlineFrame"></iframe>
+            </div>
+            <div data-role="tabbar" data-iconpos="top" data-theme="a">
+                <ul>
+                    <li>
+                        <a href="#page1" data-theme="" data-icon="home">
+                            Home
+                        </a>
+                    </li>
+					<li>
+                        <a href="#page1" data-theme="" data-icon="home">
+                            Products
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#page2" data-theme="" data-icon="star">
+                            Moods
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#page3" data-theme="" data-icon="grid">
+                            Skin
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#page4" data-theme="" data-icon="plus">
+                            More
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+		
+		<!-- oily skin massage carrier oils -->
+        <div data-role="page" id="oilmsc">
+            <div data-theme="a" data-role="header">
+                <h3>
+                    Soulflower
+                </h3>
+            </div>
+            <div data-role="content">
+				 <iframe src="oilmsc.html" width="100%" display="block" position="relative" style="height:40em" 
+					frameborder="0"  name="myInlineFrame"></iframe>
+            </div>
+            <div data-role="tabbar" data-iconpos="top" data-theme="a">
+                <ul>
+                    <li>
+                        <a href="#page1" data-theme="" data-icon="home">
+                            Home
+                        </a>
+                    </li>
+					<li>
+                        <a href="#page1" data-theme="" data-icon="home">
+                            Products
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#page2" data-theme="" data-icon="star">
+                            Moods
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#page3" data-theme="" data-icon="grid">
+                            Skin
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#page4" data-theme="" data-icon="plus">
+                            More
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+		
+        <!-- Know Your Skin Type -->
+        <div style='background:url(img/bg2.jpg)' data-role="page" id="page17">
+            <div data-theme="a" data-role="header">
+                <h3>
+                    Soulflower
+                </h3>
+            </div>
+            <div data-role="content" >
+				<form action="#" onSubmit="displayPopUp()">
+					  <fieldset data-role="controlgroup" data-type="vertical" data-mini="true">
+					  <legend><text style="font-family:Century Gothic; font-size:30px; color:black "><center> <b>Take your Skin Test</b></center></text></legend>
+						  <div style=" width:45%; float:left;">
+							  <ul style="list-style: none;">
+								  <text style="font-family:Century Gothic; font-size:22px; color:black"><center><b>Texture of your skin</b></center></text></br>
+									  <ul style="list-style: none;">
+									  <li><input type="radio" id="radio1" name="q1" value="a"/><label for="radio1"><center>Does not Shine</center></label>
+									  <li><input type="radio" id="radio2" name="q1" value="b" /><label for="radio2"><center>Is dry and sometimes slight flaking may appear</center></label></li>
+									  <li><input type="radio" id="radio3" name="q1" value="c"/><label for="radio3"><center>Shines on the nose</center></label></li>
+									  <li><input type="radio" id="radio4" name="q1" value="d" /><label for="radio4"><center>Shines all-over</center></label></li>
+									  </ul>
+								  </br></br>
+								  <text style="font-family:Century Gothic; font-size:22px; color:black"><center><b>Appearance of pores on your skin</b></center></text></br>
+									  <ul style="list-style: none;">
+									  <li><input type="radio" id="radio5" name="q2" value="a"/><label for="radio5"> <center>Normal</center></label></li>
+									  <li><input type="radio" id="radio6" name="q2" value="b" /><label for="radio6"><center>Very fine</center></label></li>
+									  <li><input type="radio" id="radio7" name="q2" value="c"/><label for="radio7"><center>Visible</center></label></li>
+									  <li><input type="radio" id="radio8" name="q2" value="d" /><label for="radio8"><center>very opened</center></label></li>
+									  </ul>
+								  </br></br>
+							  </ul>
+						  </div>
+						  <div style=" width:45%; float:right;">
+							  <ul style="list-style: none;">
+								  <text style="font-family:Century Gothic; font-size:22px; color:black"><center><b>How does your skin look like?</b></center></text></br>
+									  <ul style="list-style: none;">
+									  <li><input type="radio" id="radio9" name="q3" value="a"/><label for="radio9"><center>Cool, fresh, and supple</center></label></li>
+									  <li><input type="radio" id="radio10" name="q3" value="b" /><label for="radio10"><center> Thin and lacking moisture</center></label></li>
+									  <li><input type="radio" id="radio11" name="q3" value="c"/><label for="radio11"><center>Shines on the "T" zone</center></label></li>
+									  <li><input type="radio" id="radio12" name="q3" value="d" /><label for="radio12"><center>Shines and has a tendency for ache</center></label></li>
+									  </ul>
+								  </br></br>
+								  <text style="font-family:Century Gothic; font-size:22px; color:black"><center><b>How does your skin feel when touched?</b></center></text></br>
+									  <ul style="list-style: none;">
+									  <li><input type="radio" id="radio13" name="q4" value="a"/><label for="radio13"><center>Supple</center></label></li>
+									  <li><input type="radio" id="radio14" name="q4" value="b" /><label for="radio14"><center>Dry or very dry</center></label></li>
+									  <li><input type="radio" id="radio15" name="q4" value="c"/><label for="radio15"><center>Oily on the forehead and nose</center></label></li>
+									  <li><input type="radio" id="radio16" name="q4" value="d" /><label for="radio16"><center>Oily all over</center></label></li>
+									  </ul>
+								</br></br>
+							  </ul>
+						  </div>
+						  <div style="width:100%; float:left;">
+							  <input type='button' onclick='displayPopUp()' value='know your skin'/>
+							  </br>
+							  <text style="font-family:Century Gothic; font-size:30px; color:black"> <center>Your skin type is : <b id='userInput'> </center>  </text> 
+							  </br></br>
+						  </div>
+					  </fieldset>
+					  </form>
+            </div>
+            <div data-role="tabbar" data-iconpos="top" data-theme="a">
+                <ul>
+                    <li>
+                        <a href="#page1" data-theme="" data-icon="home">
+                            Home
+                        </a>
+                    </li>
+					<li>
+                        <a href="#page1" data-theme="" data-icon="home">
+                            Products
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#page2" data-theme="" data-icon="star">
+                            Moods
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#page3" data-theme="" data-icon="grid">
+                            Skin
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#page4" data-theme="" data-icon="plus">
+                            More
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+    </body>
+</html>
